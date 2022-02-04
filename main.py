@@ -1,5 +1,8 @@
+# %%
+from models.HistoricalData import HistoricalData
+
 def main():
-    pass
+    HistoricalData.instantiate_from_csv_minute()
 
 if __name__ == "__main__":
     main()

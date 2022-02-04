@@ -8,6 +8,9 @@ import pandas as pd
 from IPython.display import display
 
 class HistoricalData:
+    
+    data_path = r'/home/luther/github/icryptobot/data/'
+    
     # I can put the types here
     def __init__(self, pair):
         
@@ -18,7 +21,7 @@ class HistoricalData:
     
     @classmethod
     def instantiate_from_csv_minute(cls):
-        all_files = glob.glob("../data/*minute.csv")
+        all_files = glob.glob(cls.data_path + "*minute.csv")
         li = []
 
         for filename in all_files:
@@ -30,7 +33,7 @@ class HistoricalData:
         
     @classmethod
     def instantiate_from_csv_1h(cls):
-        all_files = glob.glob("../data/*1h.csv")
+        all_files = glob.glob(cls.data_path + "*1h.csv")
         li = []
 
         for filename in all_files:
@@ -45,4 +48,4 @@ class HistoricalData:
 # print(item1.__repr__())
 
 
-HistoricalData.instantiate_from_csv_minute()
+# HistoricalData.instantiate_from_csv_minute()
