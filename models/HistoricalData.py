@@ -7,9 +7,10 @@ import pandas as pd
 
 from IPython.display import display
 
-class HistoricalData:
-    
-    data_path = r'/home/luther/github/icryptobot/data/'
+DATA_PATH = '../data/'
+DATA_PATH = os.path.join(os.path.dirname(__file__), '../data/')
+
+class HistoricalData:    
     
     # I can put the types here
     def __init__(self, pair):
@@ -19,9 +20,8 @@ class HistoricalData:
     def __repr__(self):
         return f"Item('{self.pair}')"
     
-    @classmethod
-    def instantiate_from_csv_minute(cls):
-        all_files = glob.glob(cls.data_path + "*minute.csv")
+    def instantiate_from_csv_minute():
+        all_files = glob.glob(DATA_PATH + "*minute.csv")
         li = []
 
         for filename in all_files:
@@ -30,10 +30,9 @@ class HistoricalData:
 
         df_pair_minute = pd.concat(li, axis=0, ignore_index=True)
         display(df_pair_minute)
-        
-    @classmethod
-    def instantiate_from_csv_1h(cls):
-        all_files = glob.glob(cls.data_path + "*1h.csv")
+    
+    def instantiate_from_csv_1h():
+        all_files = glob.glob(DATA_PATH + "*1h.csv")
         li = []
 
         for filename in all_files:
@@ -48,4 +47,4 @@ class HistoricalData:
 # print(item1.__repr__())
 
 
-# HistoricalData.instantiate_from_csv_minute()
+HistoricalData.instantiate_from_csv_1h()
